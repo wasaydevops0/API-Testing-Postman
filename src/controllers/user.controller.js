@@ -21,11 +21,11 @@ const generateAccessAndRefreshToken = async (userId) => {
 
 const registerUser = asyncHandler(async (req, res) => {
     //getting details from user
-    const { fullname, email, username, password, } = req.body;
-    if (
-        [fullname,email,username,password].some((field)=> field.trim() === "")
-    ) {
-        throw new ApiError(400, "All fields required");
+    const { fullname, email, username, password } = req.body;
+    
+    // Safely check if any field is missing or just whitespace
+    if (!fullname?.trim() || !email?.trim() || !username?.trim() || !password?.trim()) {
+        throw new ApiError(400, "All fields (fullname, email, username, password) are required");
     } 
     const existedUser = await User.findOne({
         $or: [{ username }, { email }]
@@ -54,8 +54,6 @@ const registerUser = asyncHandler(async (req, res) => {
     )
     //validation
     //check if already exist
-    //cehck for image and avatar
-    //upload on cloudinary, avatar
     //create user object - create entry in db
     // remove password and refresh token fireld from response
     // check for user creation
@@ -72,7 +70,10 @@ const loginUser = asyncHandler(async (req, res) => {
     //validating
 
     if (!username && !email) {
-        throw new ApiError(400,"Username or email required");
+        throw new ApiError(400,"Username or email is required");
+    }
+    if (!password) {
+        throw new ApiError(400,"Password is required");
     }
 
     const user = await User.findOne({
