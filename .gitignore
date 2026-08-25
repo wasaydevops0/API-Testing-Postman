@@ -1,0 +1,55 @@
+# Generated .gitignore file for: Node, JavaScript, Express, VSCode, Windows, npm, MongoDB, PostgreSQL
+# Created with FOSSA's DevOps Tools
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+.env
+.DS_Store
+dist/
+.cache/
+coverage/
+
+# JavaScript
+# Add JavaScript-specific ignores here
+
+# Express
+# Add Express-specific ignores here
+
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Windows
+# Add Windows-specific ignores here
+
+# npm
+# Add npm-specific ignores here
+
+# MongoDB
+# Add MongoDB-specific ignores here
+
+# PostgreSQL
+# Add PostgreSQL-specific ignores here
+
+# Common
+.DS_Store
+Thumbs.db
+*.log
+*.bak
+*.tmp
+*.swp
+*~
+
+# IDE and editor generated files
+.idea/
+*.sublime-*
+
+# Local environment files
+.env
+.env.local
+.env.*.local
