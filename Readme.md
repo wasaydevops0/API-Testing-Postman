@@ -4,7 +4,7 @@ Welcome to the User Management API! This document provides all the necessary det
 
 ## Base URL
 Local Development: `http://localhost:8000/api/v1/users`
-Production (Vercel): `https://<your-vercel-domain>/api/v1/users`
+Production (Vercel): `https://api-testing-postman.vercel.app/api/v1/users`
 
 ---
 
@@ -48,30 +48,19 @@ Authenticates a user and sets session cookies.
   }
   ```
 
-### 3. Refresh Token
-Generates a new access token if the current one expires.
-- **Method:** `POST`
-- **Endpoint:** `/refresh-token`
-- **Content-Type:** `application/json`
-- **Body Data:** (Optional if testing via cookies)
-  ```json
-  {
-    "refreshToken": "your_refresh_token_here" // String, optional if cookies are active
-  }
-  ```
 
 ---
 
 ## 🔒 Secured Routes (Auth Required)
 *You must hit the `/login` endpoint successfully before testing these routes.*
 
-### 4. Get Current User
+### 3. Get Current User
 Retrieves the logged-in user's profile data.
 - **Method:** `GET`
 - **Endpoint:** `/current-user`
 - **Body:** None
 
-### 5. Change Password
+### 4. Change Password
 Updates the logged-in user's password.
 - **Method:** `POST`
 - **Endpoint:** `/change-password`
@@ -84,7 +73,7 @@ Updates the logged-in user's password.
   }
   ```
 
-### 6. Update Account (Partial Update)
+### 5. Update Account (Partial Update)
 Updates specific details of the user's account.
 - **Method:** `PATCH`
 - **Endpoint:** `/update-account`
@@ -97,7 +86,7 @@ Updates specific details of the user's account.
   }
   ```
 
-### 7. Replace Account (Full Update)
+### 6. Replace Account (Full Update)
 Completely replaces the user's core modifiable data.
 - **Method:** `PUT`
 - **Endpoint:** `/replace-account`
@@ -111,13 +100,13 @@ Completely replaces the user's core modifiable data.
   }
   ```
 
-### 8. Logout User
+### 7. Logout User
 Logs the user out by clearing the authentication cookies from the browser/client.
 - **Method:** `POST`
 - **Endpoint:** `/logout`
 - **Body:** None
 
-### 9. Delete Account
+### 8. Delete Account
 Permanently deletes the logged-in user from the database and logs them out.
 - **Method:** `DELETE`
 - **Endpoint:** `/delete-account`
