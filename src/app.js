@@ -19,5 +19,18 @@ import router from './routes/user.routes.js';
 //routes decleration
 app.use("/api/v1/users", router);
 
+// Global Error Handler (Converts all errors to JSON instead of HTML)
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    const message = err.message || "Internal Server Error";
+
+    return res.status(statusCode).json({
+        success: false,
+        message: message,
+        errors: err.errors || [],
+        // Optionally include stack trace during development for easier debugging
+        stack: process.env.NODE_ENV === "development" ? err.stack : undefined
+    });
+});
 
 export { app }
