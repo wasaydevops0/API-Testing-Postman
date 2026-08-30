@@ -19,10 +19,47 @@ import router from './routes/user.routes.js';
 //routes decleration
 app.use("/api/v1/users", router);
 
-// Global Error Handler (Converts all errors to JSON instead of HTML)
+// Catch-all route for undefined API endpoints
+app.all('*', (req, res, next) => {
+    const error = new Error(`Can't find ${req.originalUrl} on the server`);
+    error.statusCode = 404;
+    next(error);
+});
+
+// Global Error Handler
 app.use((err, req, res, next) => {
-    const statusCode = err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
+    let statusCode = err.statusCode || 500;
+    let message = err.message || "Internal Server Error";
+
+    // Handle Mongoose CastError (Invalid ID)
+    if (err.name === "CastError") {
+        message = `Resource not found. Invalid: ${err.path}`;
+        statusCode = 400;
+    }
+
+    // Handle Mongoose Duplicate Key Error
+    if (err.code === 11000) {
+        message = `Duplicate ${Object.keys(err.keyValue)} entered`;
+        statusCode = 400; // Or 409 Conflict
+    }
+
+    // Handle Mongoose Validation Error
+    if (err.name === "ValidationError") {
+        message = Object.values(err.errors).map(val => val.message).join(', ');
+        statusCode = 400;
+    }
+
+    // Handle JWT Error
+    if (err.name === "JsonWebTokenError") {
+        message = "JSON Web Token is invalid. Try Again!!!";
+        statusCode = 401;
+    }
+
+    // Handle JWT Expired Error
+    if (err.name === "TokenExpiredError") {
+        message = "JSON Web Token is expired. Try Again!!!";
+        statusCode = 401;
+    }
 
     return res.status(statusCode).json({
         success: false,
