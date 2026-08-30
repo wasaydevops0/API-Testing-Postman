@@ -20,7 +20,7 @@ import router from './routes/user.routes.js';
 app.use("/api/v1/users", router);
 
 // Catch-all route for undefined API endpoints
-app.all('*', (req, res, next) => {
+app.use((req, res, next) => {
     const error = new Error(`Can't find ${req.originalUrl} on the server`);
     error.statusCode = 404;
     next(error);
