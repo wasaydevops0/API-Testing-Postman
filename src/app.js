@@ -1,7 +1,10 @@
 import cookieParser from 'cookie-parser';
 import express from 'express';
-import cors from 'cors'
+import cors from 'cors';
+import swaggerUi from 'swagger-ui-express';
+import fs from 'fs';
 
+const swaggerDocument = JSON.parse(fs.readFileSync(new URL('./swagger.json', import.meta.url)));
 const app = express();
 
 app.use(express.json({ limit: '100kb' }))
@@ -13,6 +16,10 @@ app.use(cors({
 }))
 app.use(cookieParser())
 
+
+// Swagger API Documentation Route
+app.use('/', swaggerUi.serve);
+app.get('/', swaggerUi.setup(swaggerDocument));
 
 //import routes
 import router from './routes/user.routes.js';
