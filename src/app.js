@@ -24,6 +24,7 @@ const swaggerOptions = {
     ],
 };
 app.use('/', swaggerUi.serve);
+app.get('/', swaggerUi.setup(swaggerDocument));
 app.get('/', swaggerUi.setup(swaggerDocument, swaggerOptions));
 
 //import routes

@@ -7,6 +7,10 @@ export const swaggerDocument = {
   },
   "servers": [
     {
+      "url": "https://api-testing-postman.vercel.app/api/v1",
+      "description": "Production Server"
+    },
+    {
       "url": "http://localhost:8000/api/v1",
       "description": "Local Development Server"
     }
