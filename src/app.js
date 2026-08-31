@@ -16,8 +16,15 @@ app.use(cookieParser())
 
 
 // Swagger API Documentation Route
+const swaggerOptions = {
+    customCssUrl: "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui.min.css",
+    customJs: [
+        "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui-bundle.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui-standalone-preset.js",
+    ],
+};
 app.use('/', swaggerUi.serve);
-app.get('/', swaggerUi.setup(swaggerDocument));
+app.get('/', swaggerUi.setup(swaggerDocument, swaggerOptions));
 
 //import routes
 import router from './routes/user.routes.js';
