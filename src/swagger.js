@@ -1,7 +1,7 @@
 export const swaggerDocument = {
   "openapi": "3.0.0",
   "info": {
-    "title": "YouTube Backend API",
+    "title": "USER Backend API",
     "description": "API Documentation for the YouTube Backend Clone",
     "version": "1.0.0"
   },
@@ -92,29 +92,7 @@ export const swaggerDocument = {
         }
       }
     },
-    "/users/refresh-token": {
-      "post": {
-        "summary": "Refresh Access Token",
-        "tags": ["Users"],
-        "requestBody": {
-          "required": false,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "refreshToken": { "type": "string" }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": { "description": "Access token refreshed" },
-          "401": { "description": "Unauthorized or invalid refresh token" }
-        }
-      }
-    },
+  
     "/users/change-password": {
       "post": {
         "summary": "Change user password",
