@@ -344,6 +344,34 @@ export const swaggerDocument = {
           "200": {
             "description": "All users fetched successfully"
           }
+
+        }
+      }
+    },
+    "/users/user/{username}": {
+      "get": {
+        "summary": "Get user by username",
+        "tags": [
+          "Users"
+        ],
+        "description": "**Postman Link:** https://api-testing-postman.vercel.app/api/v1/users/user/{username}",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User fetched successfully"
+          },
+          "404": {
+            "description": "User not found"
+          }
         }
       }
     }
