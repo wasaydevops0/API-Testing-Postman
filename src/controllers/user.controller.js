@@ -318,6 +318,22 @@ const deleteUserAccount = asyncHandler(async (req, res) => {
         )
 })
 
+
+
+const getAllUsers = asyncHandler(async (req,res) => {
+    const users = await User.find().select("-password -refreshToken");
+    return res
+        .status(200)
+        .json(
+            new ApiResponse(
+                200,
+                users,
+                "All users fetched successfully"
+            )
+    )
+})
+
+
 export {
     registerUser,
     loginUser,
@@ -327,5 +343,6 @@ export {
     getCurrentUser,
     changeUserDetails,
     replaceUserDetails,
-    deleteUserAccount
+    deleteUserAccount,
+    getAllUsers
 }

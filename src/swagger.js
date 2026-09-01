@@ -332,6 +332,20 @@ export const swaggerDocument = {
         },
         "description": "**Postman Link:** https://api-testing-postman.vercel.app/api/v1/users/delete-account"
       }
+    },
+    "/users/all-users": {
+      "get": {
+        "summary": "Get all users",
+        "tags": [
+          "Users"
+        ],
+        "description": "**Postman Link:** https://api-testing-postman.vercel.app/api/v1/users/all-users",
+        "responses": {
+          "200": {
+            "description": "All users fetched successfully"
+          }
+        }
+      }
     }
   }
 };
