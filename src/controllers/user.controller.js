@@ -321,6 +321,7 @@ const deleteUserAccount = asyncHandler(async (req, res) => {
 
 
 const getAllUsers = asyncHandler(async (req,res) => {
+ try {
     const users = await User.find().select("-password -refreshToken");
     return res
         .status(200)
@@ -330,7 +331,11 @@ const getAllUsers = asyncHandler(async (req,res) => {
                 users,
                 "All users fetched successfully"
             )
-    )
+        )
+ }
+ catch (error) {
+    throw new ApiError(500, "Something went wrong while fetching users");   
+ } 
 })
 
 
