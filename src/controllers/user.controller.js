@@ -338,6 +338,24 @@ const getAllUsers = asyncHandler(async (req,res) => {
  } 
 })
 
+const getAUser = asyncHandler(async (req,res) => {
+    try {
+        const userName = req.params.username;
+        const user = await User.findOne({username: userName}).select("-password -refreshToken -email")
+
+        return res
+            .status(200)
+            .json(
+                new ApiResponse(
+                    200,
+                    user,
+                    "User fetched successfully"
+                )
+            )
+    } catch (error) {
+        throw new ApiError(500, "Something went wrong while fetching the user");
+    }
+})
 
 export {
     registerUser,
@@ -349,5 +367,6 @@ export {
     changeUserDetails,
     replaceUserDetails,
     deleteUserAccount,
-    getAllUsers
+    getAllUsers,
+    getAUser
 }

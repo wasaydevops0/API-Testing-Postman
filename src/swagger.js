@@ -1,8 +1,8 @@
 export const swaggerDocument = {
   "openapi": "3.0.0",
   "info": {
-    "title": "USER Backend API",
-    "description": "API Documentation for the YouTube Backend Clone",
+    "title": "USER Management Backend API",
+    "description": "API Documentation for the USER Management Backend",
     "version": "1.0.0"
   },
   "servers": [

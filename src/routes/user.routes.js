@@ -9,7 +9,8 @@ import {
     refreshAccessToken,
     deleteUserAccount,
     replaceUserDetails,
-    getAllUsers
+    getAllUsers,
+    getAUser
 } from "../controllers/user.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 
@@ -19,7 +20,7 @@ router.route("/register").post(registerUser)
 
 router.route("/login").post(loginUser)
 router.route("/all-users").get(getAllUsers)
-
+router.route("/user/:username").get(getAUser)
 //secured routes
 router.route("/logout").post(verifyJWT, logoutUser)
 router.route("/refresh-token").post(refreshAccessToken)
