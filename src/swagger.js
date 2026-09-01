@@ -28,173 +28,309 @@ export const swaggerDocument = {
     "/users/register": {
       "post": {
         "summary": "Register a new user",
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["fullname", "email", "username", "password"],
+                "required": [
+                  "fullname",
+                  "email",
+                  "username",
+                  "password"
+                ],
                 "properties": {
-                  "fullname": { "type": "string" },
-                  "email": { "type": "string" },
-                  "username": { "type": "string" },
-                  "password": { "type": "string" }
+                  "fullname": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "201": { "description": "User registered successfully" },
-          "400": { "description": "Bad Request (Missing fields)" },
-          "409": { "description": "Conflict (User already exists)" }
-        }
+          "201": {
+            "description": "User registered successfully"
+          },
+          "400": {
+            "description": "Bad Request (Missing fields)"
+          },
+          "409": {
+            "description": "Conflict (User already exists)"
+          }
+        },
+        "description": "**Postman Link:** https://api-testing-postman.vercel.app/api/v1/users/register"
       }
     },
     "/users/login": {
       "post": {
         "summary": "Login a user",
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["password"],
+                "required": [
+                  "password"
+                ],
                 "properties": {
-                  "username": { "type": "string" },
-                  "email": { "type": "string" },
-                  "password": { "type": "string" }
+                  "username": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "User logged in successfully" },
-          "400": { "description": "Bad request" },
-          "401": { "description": "Unauthorized (Incorrect password)" },
-          "404": { "description": "User not found" }
-        }
+          "200": {
+            "description": "User logged in successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized (Incorrect password)"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        },
+        "description": "**Postman Link:** https://api-testing-postman.vercel.app/api/v1/users/login"
       }
     },
     "/users/logout": {
       "post": {
         "summary": "Logout a user",
-        "tags": ["Users"],
-        "security": [{ "bearerAuth": [] }],
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
-          "200": { "description": "User logged out" },
-          "401": { "description": "Unauthorized" }
-        }
+          "200": {
+            "description": "User logged out"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "description": "**Postman Link:** https://api-testing-postman.vercel.app/api/v1/users/logout"
       }
     },
-  
     "/users/change-password": {
       "post": {
         "summary": "Change user password",
-        "tags": ["Users"],
-        "security": [{ "bearerAuth": [] }],
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["oldPassword", "newPassword"],
+                "required": [
+                  "oldPassword",
+                  "newPassword"
+                ],
                 "properties": {
-                  "oldPassword": { "type": "string" },
-                  "newPassword": { "type": "string" }
+                  "oldPassword": {
+                    "type": "string"
+                  },
+                  "newPassword": {
+                    "type": "string"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "Password changed successfully" },
-          "400": { "description": "Bad Request (Incorrect old password)" },
-          "401": { "description": "Unauthorized" }
-        }
+          "200": {
+            "description": "Password changed successfully"
+          },
+          "400": {
+            "description": "Bad Request (Incorrect old password)"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "description": "**Postman Link:** https://api-testing-postman.vercel.app/api/v1/users/change-password"
       }
     },
     "/users/current-user": {
       "get": {
         "summary": "Get current logged in user details",
-        "tags": ["Users"],
-        "security": [{ "bearerAuth": [] }],
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
-          "200": { "description": "Current user fetched successfully" },
-          "401": { "description": "Unauthorized" }
-        }
+          "200": {
+            "description": "Current user fetched successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "description": "**Postman Link:** https://api-testing-postman.vercel.app/api/v1/users/current-user"
       }
     },
     "/users/update-account": {
       "patch": {
         "summary": "Update user account details (Partial)",
-        "tags": ["Users"],
-        "security": [{ "bearerAuth": [] }],
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["fullname", "email"],
+                "required": [
+                  "fullname",
+                  "email"
+                ],
                 "properties": {
-                  "fullname": { "type": "string" },
-                  "email": { "type": "string" }
+                  "fullname": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "User details updated successfully" },
-          "400": { "description": "Bad request" },
-          "401": { "description": "Unauthorized" }
-        }
+          "200": {
+            "description": "User details updated successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "description": "**Postman Link:** https://api-testing-postman.vercel.app/api/v1/users/update-account"
       }
     },
     "/users/replace-account": {
       "put": {
         "summary": "Replace user account details (Full)",
-        "tags": ["Users"],
-        "security": [{ "bearerAuth": [] }],
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["fullname", "email", "username"],
+                "required": [
+                  "fullname",
+                  "email",
+                  "username"
+                ],
                 "properties": {
-                  "fullname": { "type": "string" },
-                  "email": { "type": "string" },
-                  "username": { "type": "string" }
+                  "fullname": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  }
                 }
               }
             }
           }
         },
         "responses": {
-          "200": { "description": "User details replaced successfully" },
-          "400": { "description": "Bad request" },
-          "401": { "description": "Unauthorized" }
-        }
+          "200": {
+            "description": "User details replaced successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "description": "**Postman Link:** https://api-testing-postman.vercel.app/api/v1/users/replace-account"
       }
     },
     "/users/delete-account": {
       "delete": {
         "summary": "Delete user account",
-        "tags": ["Users"],
-        "security": [{ "bearerAuth": [] }],
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
-          "200": { "description": "User account deleted successfully" },
-          "401": { "description": "Unauthorized" }
-        }
+          "200": {
+            "description": "User account deleted successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "description": "**Postman Link:** https://api-testing-postman.vercel.app/api/v1/users/delete-account"
       }
     }
   }
